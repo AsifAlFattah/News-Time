@@ -3,3 +3,8 @@ body{
     background-color: rgba(243, 237, 237, 0.886);
     font-family: 'Roboto', sans-serif;
 }
+
+#categories-container a:hover{
+    background-color: blue;
+    cursor: pointer;
+}
