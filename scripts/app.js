@@ -48,7 +48,7 @@ const showNews = (newses,name) =>{
     newsContainer.innerHTML = ``;
     for(const news of newses){
         const newsDiv = document.createElement('div');
-        newsDiv.classList.add('col-12','d-flex', 'p-2', 'm-3', 'bg-white', 'rounded');
+        newsDiv.classList.add('col-12','d-flex', 'p-2', 'm-3', 'bg-white', 'rounded', 'news-container-div');
         newsDiv.innerHTML = `
             <img src="${news.thumbnail_url}" alt=" " width="300px" height="300px" class="img p-3 rounded">
             <div class="p-4 d-flex flex-column align-content-between">
