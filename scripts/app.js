@@ -80,6 +80,7 @@ const showNews = (newses,name) =>{
     }
 };
 
+
 // Load Detailed News
 const loadDetails = async (id) =>{
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
