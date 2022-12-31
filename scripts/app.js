@@ -44,7 +44,6 @@ const showNews = (newses) =>{
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ``;
     for(const news of newses){
-        console.log(news);
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col-12','d-flex', 'p-2', 'm-3', 'bg-white', 'rounded');
         newsDiv.innerHTML = `
@@ -56,18 +55,18 @@ const showNews = (newses) =>{
                     <div class="author-div d-flex">
                         <img src="${news.author.img}" alt=" " width="50px" height="50px" class="rounded-5 ">
                         <div class="px-2">
-                            <h5 class="mb-0 pb-0">${news.author.name}</h5>
-                            <p>${news.author.published_date}</p>
+                            <h5 class="mb-0 pb-0">${news.author.name ? news.author.name : 'Not Found!'}</h5>
+                            <p>${news.author.published_date ? news.author.published_date : 'Not Found!'}</p>
                         </div>
                     </div>
                     <div class="views-div">
-                        <p class="fw-semibold"><i class="fa-regular fa-eye mx-1"></i> ${news.total_view}</p>
+                        <p class="fw-semibold"><i class="fa-regular fa-eye mx-1"></i> ${news.total_view ? news.total_view : 'Not Found!'}</p>
                     </div>
                     <div class="rating div">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
                     </div>
                     <div class="details-div">
-                        <button class="border-0 bg-white" onclick="showDetails('${news._id}')">
+                        <button type="button" class="border-0 bg-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="loadDetails('${news._id}')">
                             <i class="fa-solid fa-arrow-right fs-2 px-4 "></i>
                         </button>
                     </div>
@@ -78,10 +77,24 @@ const showNews = (newses) =>{
     }
 };
 
-// Show Detailed Post
-const showDetails = (id) =>{
-    const url = `https://openapi.programming-hero.com/api/news/${id}`
-    console.log(url);
+// Load Detailed News
+const loadDetails = async (id) =>{
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        showDetails(data.data[0]);
+    }
+    catch(error){
+        console.log(error);
+    }
 };
 
+// Show Detailed Post
+const showDetails = (details) =>{
+    console.log(details);
+};
+
+
 loadAllCategories();
+loadNews('08');
