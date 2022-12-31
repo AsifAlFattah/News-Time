@@ -93,6 +93,33 @@ const loadDetails = async (id) =>{
 // Show Detailed Post
 const showDetails = (details) =>{
     console.log(details);
+    const newsTitle = document.getElementById('staticBackdropLabel');
+    newsTitle.innerText = details.title;
+    const newsDetailsDiv = document.getElementById('news-details-div');
+    newsDetailsDiv.innerHTML = `
+        <img src="${details.image_url}" alt=" " width="100%">
+        <p class="mt-2">
+            <b>Author:</b> ${details.author.name ? details.author.name : 'Not Found!'} &emsp; <b>Published Date:</b> ${details.author.published_date ? details.author.published_date : 'Not Found!'} &emsp; <span><i class="fa-regular fa-eye mx-1"></i>${details.total_view ? details.total_view : 'Not Foound!'}</span> <br>
+            <span id="todays-pick" class="fst-italic bg-info px-2 rounded d-none">Todays Pick</span> &nbsp; 
+            <span id="trend" class="fst-italic bg-info px-2 rounded d-none">Trending</span>
+        </p>
+        <br>
+        <p>${details.details}</p>
+    `;
+    const todaysPick = document.getElementById('todays-pick');
+    const trending = document.getElementById('trend');
+    if(details.others_info.is_todays_pick){
+        todaysPick.classList.remove('d-none');
+    }
+    else{
+        todaysPick.classList.add('d-none');
+    }
+    if(details.others_info.is_trending){
+        trending.classList.remove('d-none');
+    }
+    else{
+        trending.classList.add('d-none');
+    }
 };
 
 
