@@ -18,7 +18,7 @@ const displayAllCategories = (categories) =>{
         const categoryLink = document.createElement('a');
         categoryLink.classList.add('rounded', 'p-2', 'mx-2', 'text-muted', 'text-decoration-none', 'fw-semibold', 'fs-4');
         categoryLink.addEventListener('click',function(){
-            loadNews(category.category_id);
+            loadNews(category.category_id,category.category_name);
         });
         categoryLink.innerText = `${category.category_name}`;
         categoriesContainer.appendChild(categoryLink);
@@ -26,12 +26,12 @@ const displayAllCategories = (categories) =>{
 };
 
 // Load News
-const loadNews = async (id) =>{
+const loadNews = async (id,name) =>{
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     try{
         const res = await fetch(url);
         const data = await res.json();
-        showNews(data.data);
+        showNews(data.data,name);
     }
     catch(error){
         console.log(error);
@@ -40,7 +40,10 @@ const loadNews = async (id) =>{
 };
 
 // Show News
-const showNews = (newses) =>{
+const showNews = (newses,name) =>{
+    const numberOfNews = newses.length;
+    const numberOfNewsText = document.getElementById('number-of-news');
+    numberOfNewsText.innerText = `${numberOfNews} items found in ${name}`;
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ``;
     for(const news of newses){
@@ -124,4 +127,4 @@ const showDetails = (details) =>{
 
 
 loadAllCategories();
-loadNews('08');
+loadNews('08','All News');
