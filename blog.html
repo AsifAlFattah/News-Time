@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>News Time</title>
+    <title>News Time - Blog</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -38,7 +38,65 @@
     </header>
     <!-- Main Part -->
     <main>
-        
+        <section class="container ">
+            <h2 class="text-primary fst-italic my-5 p-5 bg-white rounded">Some common confusions in JavaScript:</h2>
+            <div class="my-5 p-5 bg-white rounded">
+                <h3>1. What are the differences among var, let and const in JS?</h3> <br>
+                <p>
+                    In JavaScript, var, let, and const are all ways to declare variables. Each has its own specific rules and use cases. Here is a brief summary of the differences between them: 
+                    <br> <br>
+                    <b>var:</b> The var keyword is used to declare variables in JavaScript. Variables declared with var are function-scoped, which means that they are only accessible within the function in which they are defined, or globally if they are defined outside of any function. var variables can be re-declared and re-assigned within the same scope.
+                    <br> <br>
+                    <b>let:</b> The let keyword was introduced in ECMAScript 6 (ES6) and is used to declare variables in a similar way to var. However, let variables are block-scoped, which means that they are only accessible within the block of code in which they are defined. let variables cannot be re-declared within the same block of code, but they can be re-assigned.
+                    <br> <br>
+                    <b>const:</b> The const keyword was also introduced in ES6 and is used to declare variables that cannot be re-assigned. const variables are block-scoped, like let variables. In addition, const variables must be initialized when they are declared, and their value cannot be changed thereafter.
+                    <br> <br>
+                    It is generally considered good practice to use const whenever possible, and only use let or var when you need to reassign a variable.
+                </p>
+            </div>
+            <div class="my-5 p-5 bg-white rounded">
+                <h3>2. What are the differences between regular function and arrow function in JS?</h3> <br>
+                <p>
+                    In JavaScript, there are two ways to define a function: using the function keyword, and using an arrow function. Here is a brief summary of the differences between them:
+                    <br> <br>
+                    <b>Regular function:</b> A function defined using the function keyword is called a regular function. Regular functions have their own this value, which is determined by how the function is called. They also have an arguments object, which is an array-like object that contains the arguments passed to the function.
+                    <br> <br>
+                    <b>Arrow function:</b> An arrow function is a concise way to define a function using the => syntax. Arrow functions do not have their own this value; instead, they inherit the this value of the surrounding scope. They also do not have an arguments object; instead, they use the normal function parameter syntax.
+                    <br> <br>
+                    In general, arrow functions are a shorter and more concise way to define functions, and are particularly useful when defining functions to be used as callbacks or in functional programming constructs. However, they can sometimes behave differently from regular functions, so it is important to understand the differences between them.
+                </p>
+            </div>
+            <div class="my-5 p-5 bg-white rounded">
+                <h3>3. What are the differences among map, foreach, filter and find in JS?</h3> <br>
+                <p>
+                    In JavaScript, map, forEach, filter, and find are all array methods that can be used to manipulate or retrieve elements from an array. Here is a brief summary of the differences between them:
+                    <br> <br>
+                    <b>map:</b> The map method creates a new array by calling a provided function on each element in the original array. The provided function can transform the element in any way and return the transformed value, which will be added to the new array. The map method does not modify the original array.
+                    <br> <br>
+                    <b>forEach:</b> The forEach method calls a provided function on each element in the array. It does not create a new array or return a value, but it can be used to perform a side effect for each element in the array. Like map, forEach does not modify the original array.
+                    <br> <br>
+                    <b>filter:</b> The filter method creates a new array with all elements that pass a provided test function. The test function is called for each element in the array, and if it returns true, the element is added to the new array. The filter method does not modify the original array.
+                    <br> <br>
+                    <b>find:</b> The find method returns the first element in the array that passes a provided test function. If no element passes the test, it returns undefined. The find method does not modify the original array.
+                </p>
+            </div>
+            <div class="my-5 p-5 bg-white rounded">
+                <h3>4. What are the reasons of using template string in JS?</h3> <br>
+                <p>
+                    In JavaScript, template strings are string literals that allow for the inclusion of expressions inside curly braces {}. Template strings are indicated by using backticks (`) instead of single or double quotes.
+                    <br><br>
+                    There are several reasons why we should use template strings in our code:
+                    <br> <br>
+                    <b>1. Interpolation:</b> One of the main benefits of template strings is that they allow us to easily interpolate variables and expressions within the string. 
+                    <br> <br>
+                    <b>2. Multiline strings:</b> Template strings can span multiple lines without the need to use the \n escape sequence. This can make our code more readable, especially when defining long strings with multiple lines.
+                    <br> <br>
+                    <b>3. Easy string concatenation:</b> Template strings allow us to easily concatenate strings without the need to use the + operator. This can make our code more concise and easier to read.
+                    <br> <br>
+                    <b>4. Tagged template literals:</b> Template strings can be "tagged" with a function by placing the function name before the template string. The function will be called with the processed template string as the first argument, followed by any additional expressions. This can be used to create custom string formatting or to perform other operations on template strings.
+                </p>
+            </div>
+        </section>
     </main>
     <!-- Footer Part -->
     <footer class="bg-white p-5 mt-5">
