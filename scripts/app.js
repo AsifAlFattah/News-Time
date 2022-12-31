@@ -18,6 +18,7 @@ const displayAllCategories = (categories) =>{
         const categoryLink = document.createElement('a');
         categoryLink.classList.add('rounded', 'p-2', 'mx-2', 'text-muted', 'text-decoration-none', 'fw-semibold', 'fs-4');
         categoryLink.addEventListener('click',function(){
+            toggleSpinner(true);
             loadNews(category.category_id,category.category_name);
         });
         categoryLink.innerText = `${category.category_name}`;
@@ -44,6 +45,9 @@ const showNews = (newses,name) =>{
     const numberOfNews = newses.length;
     const numberOfNewsText = document.getElementById('number-of-news');
     numberOfNewsText.innerText = `${numberOfNews} items found in ${name}`;
+    if(numberOfNews==0){
+        toggleSpinner(false);
+    }
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ``;
     for(const news of newses){
@@ -77,6 +81,7 @@ const showNews = (newses,name) =>{
             </div>
         `;
         newsContainer.appendChild(newsDiv);
+        toggleSpinner(false);
     }
 };
 
@@ -126,6 +131,16 @@ const showDetails = (details) =>{
     }
 };
 
+// Spinner
+const toggleSpinner = isLoading =>{
+    const spinner = document.getElementById('spinner-section');
+    if(isLoading){
+        spinner.classList.remove('d-none');
+    }
+    else{
+        spinner.classList.add('d-none');
+    }
+ };
 
 loadAllCategories();
 loadNews('08','All News');
